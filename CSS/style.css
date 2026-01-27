@@ -2277,6 +2277,9 @@ a.contact-main-link {
         font-size: 14px;
         padding: 13px 20px;
     }
+    .logo-link:hover {
+    transform: none;
+}
 }
 
 @media (min-width: 1114px) and (max-width: 1115px) {
