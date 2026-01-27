@@ -2285,6 +2285,9 @@ a.contact-main-link {
     .contact-divider::after {
         width: 330px;
     }
+    .logo-link:hover {
+    transform: none !important;
+}
 }
 
 /* TABLETS PORTRAIT E PEQUENOS (768px - 1024px) */
@@ -4618,6 +4621,10 @@ a.contact-main-link {
     /* Header */
     body header.navbar {
         padding: 14px 30px;
+    }
+    
+    .logo-link:hover {
+    transform: none !important;
     }
 
     /* Hero */
