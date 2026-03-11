@@ -2285,6 +2285,9 @@ a.contact-main-link {
     .contact-divider::after {
         width: 330px;
     }
+    .logo-link:hover {
+    transform: none !important;
+}
 }
 
 /* TABLETS PORTRAIT E PEQUENOS (768px - 1024px) */
@@ -2348,6 +2351,10 @@ a.contact-main-link {
     .footer-links a:hover {
         color: rgba(255, 255, 255, 0.5) !important;
         transform: none !important;
+    }
+
+    .logo-link:hover {
+    transform: none !important;
     }
 
     .social-icon:hover {
@@ -2927,6 +2934,10 @@ a.contact-main-link {
         background: #9333ea !important;
     }
 
+    .logo-link:hover {
+    transform: none !important;
+    }
+
     .btn-outline:hover {
         background: transparent !important;
         color: #9333ea !important;
@@ -3343,6 +3354,10 @@ a.contact-main-link {
     .skill-tag {
         cursor: default !important;
         pointer-events: none !important;
+    }
+
+    .logo-link:hover {
+    transform: none !important;
     }
 
     .skill-tag:hover {
@@ -4222,10 +4237,10 @@ a.contact-main-link {
 }
 
 /* ========================================
-   iPAD MINI + SURFACE DUO - LAYOUT IGUAL AO iPAD AIR (SEM !IMPORTANT)
+           iPAD MINI + SURFACE DUO 
    ======================================== */
 
-/* iPad Mini Portrait (768px - 834px) - DEVE VIR POR ÚLTIMO */
+/* iPad Mini Portrait (768px - 834px) */
 @media only screen and (min-width: 768px) and (max-width: 834px) and (orientation: portrait) {
 
     /* Remove todos os hovers */
@@ -4253,6 +4268,10 @@ a.contact-main-link {
         background: rgba(255, 255, 255, 0.03);
         border-color: rgba(255, 255, 255, 0.05);
         transform: none;
+    }
+
+    .logo-link:hover {
+    transform: none !important;
     }
 
     /* Header */
@@ -4596,12 +4615,16 @@ a.contact-main-link {
     }
 }
 
-/* Surface Duo (540px - 580px) - DEVE VIR POR ÚLTIMO */
+/* Surface Duo (540px - 580px) */
 @media only screen and (min-width: 540px) and (max-width: 580px) {
 
     /* Header */
     body header.navbar {
         padding: 14px 30px;
+    }
+    
+    .logo-link:hover {
+    transform: none !important;
     }
 
     /* Hero */
@@ -4852,6 +4875,9 @@ a.contact-main-link {
         display: flex;
         flex-direction: row;
 
+        .logo-link:hover {
+    transform: none !important;
+    }
     }
 
 }
