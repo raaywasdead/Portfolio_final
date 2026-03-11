@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run build)",
+      "Bash(node -e \"const si = require\\(''react-icons/si''\\); console.log\\(''SiGoogle:'', !!si.SiGoogle\\); console.log\\(''SiGooglecloud:'', !!si.SiGooglecloud\\); const tb = require\\(''react-icons/tb''\\); console.log\\(''TbApi:'', !!tb.TbApi\\)\")"
+    ]
+  }
+}
