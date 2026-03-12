@@ -18,15 +18,15 @@ export const LoadingScreen = ({ onComplete }: Props) => {
 
     document.documentElement.classList.add('no-scroll')
 
-    // Progress simulation
     let currentProgress = 0
-    let targetProgress  = 0
+    let targetProgress = 0
     let rafId: number
 
     const animateProgress = () => {
       if (currentProgress < targetProgress) {
         const diff = targetProgress - currentProgress
-        currentProgress = Math.min(currentProgress + Math.max(0.4, diff * 0.06), targetProgress)
+        const increment = Math.max(0.4, diff * 0.06)
+        currentProgress = Math.min(currentProgress + increment, targetProgress)
         setProgress(Math.floor(currentProgress))
       }
       if (!isCompleteRef.current || currentProgress < 100) {
@@ -40,14 +40,14 @@ export const LoadingScreen = ({ onComplete }: Props) => {
       isCompleteRef.current = true
       targetProgress = 100
 
-      const elapsed   = Date.now() - startTime
+      const elapsed = Date.now() - startTime
       const remaining = Math.max(0, minTime - elapsed)
 
       setTimeout(() => {
         gsap.to(screenRef.current, {
-          yPercent: -100,
-          duration: 0.85,
-          ease: 'power3.inOut',
+          opacity: 0,
+          duration: 0.5,
+          ease: 'power2.out',
           onComplete: () => {
             document.documentElement.classList.remove('no-scroll')
             onComplete()
@@ -72,38 +72,29 @@ export const LoadingScreen = ({ onComplete }: Props) => {
   return (
     <div
       ref={screenRef}
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
-      style={{ background: '#05020c' }}
+      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#0a0a0a]"
       aria-hidden="true"
     >
-      {/* Top accent line */}
-      <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, transparent, #7c3aed, #9333ea, transparent)' }} />
-
-      <div className="flex flex-col items-center gap-10">
-        {/* Logo */}
+      <div className="flex flex-col items-center gap-8">
         <div className="relative">
           <div className="absolute inset-0 rounded-full bg-purple-600/20 blur-2xl scale-150" />
           <img
             src={asset('IMG/logo.png')}
             alt=""
-            className="loading-logo-pulse relative w-20 h-20 object-contain"
+            className="loading-logo-pulse relative w-24 h-24 object-contain"
           />
         </div>
 
-        {/* Progress */}
-        <div className="flex flex-col items-center gap-3 w-56">
+        <div className="flex flex-col items-center gap-3 w-52">
           <div className="flex justify-between w-full">
-            <span className="text-white/25 text-[10px] tracking-widest uppercase">Carregando</span>
-            <span className="text-white/50 text-[10px] font-medium tabular-nums">{progress}%</span>
+            <span className="text-white/30 text-xs tracking-widest uppercase">Carregando</span>
+            <span className="text-white/60 text-xs font-medium tabular-nums">{progress}%</span>
           </div>
-          <div className="w-full h-[1px] bg-white/[0.08] rounded-full overflow-hidden">
+          <div className="w-full h-[2px] bg-white/10 rounded-full overflow-hidden">
             <div className="loading-bar-fill" style={{ width: `${progress}%` }} />
           </div>
         </div>
       </div>
-
-      {/* Bottom line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px]" style={{ background: 'linear-gradient(90deg, transparent, rgba(124,58,237,0.4), transparent)' }} />
     </div>
   )
 }

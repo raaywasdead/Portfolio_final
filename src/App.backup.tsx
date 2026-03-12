@@ -1,5 +1,4 @@
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { LanguageProvider } from './contexts/LanguageContext'
 import { LoadingScreen } from './components/LoadingScreen'
 import { Background } from './components/Background'
 import { Navbar } from './components/Navbar'
@@ -10,7 +9,6 @@ import { Projects } from './components/Projects'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { ScrollToTop } from './components/ScrollToTop'
-import { ScrollProgress } from './components/ScrollProgress'
 import { useState } from 'react'
 
 // A LoadingScreen já é fixed z-[9999], então overlay o conteúdo sem precisar
@@ -24,14 +22,12 @@ function App() {
   }
 
   return (
-    <LanguageProvider>
     <>
       {isLoading && <LoadingScreen onComplete={handleLoadComplete} />}
 
       <a href="#inicio" className="skip-link">Pular para o conteúdo</a>
 
       <Background />
-      <div className="grain-overlay" aria-hidden="true" />
 
       <div className="relative z-10">
         <Navbar />
@@ -50,9 +46,7 @@ function App() {
       </div>
 
       <ScrollToTop />
-      <ScrollProgress />
     </>
-    </LanguageProvider>
   )
 }
 

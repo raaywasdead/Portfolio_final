@@ -8,6 +8,11 @@ import './index.css'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  gsap.defaults({ duration: 0, delay: 0 })
+  ScrollTrigger.config({ ignoreMobileResize: true })
+}
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />

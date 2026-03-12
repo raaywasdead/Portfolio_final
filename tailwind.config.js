@@ -17,6 +17,7 @@ export default {
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         heading: ['Poppins', 'Inter', 'sans-serif'],
+        display: ['Bebas Neue', 'Poppins', 'sans-serif'],
       },
       transitionDuration: {
         400: '400ms',

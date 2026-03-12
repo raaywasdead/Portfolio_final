@@ -59,6 +59,7 @@ export const Background = () => {
   const mountRef = useRef<HTMLDivElement>(null)
   const effectRef = useRef<any>(null)
   const suitsRef  = useRef<HTMLDivElement>(null)
+  const mobileScale = typeof window !== 'undefined' && window.innerWidth < 640 ? 0.52 : 1
 
   useEffect(() => {
     // ── Vanta fog ──────────────────────────────────────────────────
@@ -165,7 +166,7 @@ export const Background = () => {
               position: 'absolute',
               left: `${s.x}%`,
               top: `${s.y}%`,
-              fontSize: `${s.size}px`,
+              fontSize: `${s.size * mobileScale}px`,
               lineHeight: 1,
               color: s.outline ? 'transparent' : s.color,
               WebkitTextStroke: s.outline ? `1.5px ${s.color}` : undefined,
@@ -178,6 +179,22 @@ export const Background = () => {
           </span>
         ))}
       </div>
+
+      {/* Film grain overlay */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          pointerEvents: 'none',
+          zIndex: 3,
+          opacity: 0.038,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")`,
+          backgroundSize: '250px 250px',
+          backgroundRepeat: 'repeat',
+          animation: 'grain 0.35s steps(1) infinite',
+        }}
+      />
     </div>
   )
 }

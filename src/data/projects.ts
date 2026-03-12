@@ -26,7 +26,7 @@ export const projects: Project[] = [
     title: 'Orbyt',
     badge: 'Full Stack',
     description:
-      'Sistema de produtividade pessoal completo — tarefas, progresso e recompensas construído para quem leva a sério. Desenvolvido do zero com React, TypeScript, Node.js e PostgreSQL. Inclui autenticação via Google OAuth 2.0, login com e-mail/senha (bcrypt), API REST completa e deploy em produção no Railway.',
+      'Sistema de produtividade completo com tarefas, progresso e recompensas. Stack full stack do zero: React, TypeScript, Node.js e PostgreSQL — autenticação via Google OAuth 2.0, API REST estruturada e deploy em produção no Railway.',
     tags: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Google OAuth 2.0', 'REST API'],
     liveUrl: 'https://orbyt.up.railway.app/',
     githubUrl: 'https://github.com/raaywasdead/Orbyt-App',
