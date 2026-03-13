@@ -34,14 +34,14 @@ const TECH_ICONS: TechItem[] = [
 
 const GAMES = [
   { name: 'Undertale',            image: 'IMG/game-undertale.webp',    genre: 'RPG',           desc: 'RPG onde você pode vencer sem matar ninguém. Uma das histórias mais criativas que já vi num jogo.' },
-  { name: 'Deltarune',            image: 'IMG/game-deltarune.webp',    genre: 'RPG',           desc: 'RPG do Toby Fox com narrativa densa, personagens marcantes e trilha sonora incrível. É o jogo que mais me impactou até hoje.' },
+  { name: 'Deltarune',            image: 'IMG/game-deltarune.webp',    genre: 'RPG',           desc: 'RPG com narrativa densa, personagens marcantes e trilha sonora incrível. É o jogo que mais me impactou até hoje.' },
   { name: 'Elden Ring',           image: 'IMG/game-eldenring.webp',    genre: 'Soulslike',     desc: 'RPG de mundo aberto da FromSoftware com lore escrito junto a George R.R. Martin. Bosses lendários e exploração viciante.' },
   { name: 'Dark Souls',           image: 'IMG/game-darksouls.webp',    genre: 'Soulslike',     desc: 'O pioneiro do soulslike. Dificuldade real que recompensa paciência, observação e persistência.' },
   { name: 'Terraria',             image: 'IMG/game-terraria.webp',     genre: 'Survival',      desc: 'Survival sandbox 2D com progressão quase infinita. Já perdi horas felizmente explorando cada canto do mapa.' },
   { name: 'Ultrakill',            image: 'IMG/game-ultrakill.webp',    genre: 'FPS',           desc: 'FPS caótico com movimento ultraveloz e combate estilizado. Pura adrenalina do primeiro ao último segundo.' },
   { name: 'The Binding of Isaac', image: 'IMG/game-isaac.webp',        genre: 'Roguelike',     desc: 'Roguelike de masmorra com rejogabilidade absurda. Cada run tem uma build, um ritmo e um fim diferente.' },
   { name: 'Bloons TD6',           image: 'IMG/game-bloons.webp',       genre: 'Tower Defense', desc: 'Tower defense estratégico e viciante. Simples na superfície, surpreendentemente profundo na prática.' },
-  { name: 'Brawl Stars',          image: 'IMG/game-brawlstars.webp',   genre: 'Multiplayer',   desc: 'Multiplayer mobile competitivo da Supercell. Jogo desde o lançamento e ainda consigo diversão em cada partida.' },
+  { name: 'Brawl Stars',          image: 'IMG/game-brawlstars.webp',   genre: 'Multiplayer',   desc: 'Multiplayer mobile competitivo da Supercell. Jogo desde 2025 e ainda sinto diversão em cada partida.' },
   { name: 'Dead Cells',           image: 'IMG/game-deadcells.webp',    genre: 'Roguelike',     desc: 'Roguelike metroidvania com combate fluido e progressão viciante. Cada morte ensina algo novo.' },
   { name: 'Hotline Miami',        image: 'IMG/game-hotlinemiami.webp', genre: 'Action',        desc: 'Ação top-down brutal e estilizada com trilha sonora absurdamente boa. Violento, rápido e difícil de parar.' },
   { name: 'Borderlands 2',        image: 'IMG/game-borderlands2.webp', genre: 'Looter Shooter', desc: 'Looter shooter cooperativo com humor único e personagens memoráveis. Joguei muito com amigos.' },
