@@ -575,7 +575,7 @@ export const About = () => {
                                 loading="lazy"
                                 draggable={false}
                               />
-                              <div className="absolute inset-y-0 left-0 w-[7px] pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.6), transparent)' }} />
+                              <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.6), transparent)' }} />
                               <div className="absolute inset-x-0 top-0 h-[5px] pointer-events-none" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.45), transparent)' }} />
                               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" style={{ background: 'rgba(124,58,237,0.22)' }} />
                             </button>
@@ -638,7 +638,7 @@ export const About = () => {
             const g = GAMES[openedIdx]
             return (
               <>
-                <img src={asset(g.image)} alt={g.name} className="absolute inset-0 w-full h-full object-cover" />
+                <img src={asset(g.image)} alt={g.name} className="absolute inset-0 w-full h-full object-cover" loading="lazy" draggable={false} />
                 <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to top, rgba(5,2,12,1) 0%, rgba(5,2,12,0.92) 25%, rgba(5,2,12,0.55) 50%, transparent 75%)' }} />
                 <button
                   onClick={closeBook}

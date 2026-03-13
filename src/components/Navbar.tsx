@@ -121,7 +121,7 @@ export const Navbar = () => {
             onClick={(e) => { e.preventDefault(); handleNavClick('#inicio') }}
             className="flex items-center gap-2.5 group"
           >
-            <img src={asset('IMG/logo.png')} alt="Logo João Vitor" className="w-9 h-9 object-contain transition-transform duration-300 group-hover:scale-110" />
+            <img src={asset('IMG/logo.png')} alt="Logo João Vitor" className="w-9 h-9 object-contain transition-transform duration-300 group-hover:scale-110" loading="lazy" />
             <span className="font-heading font-semibold text-white text-sm sm:text-base leading-none whitespace-nowrap">
               João Vitor<span className="text-purple-400"> B.S</span>
             </span>
@@ -186,7 +186,7 @@ export const Navbar = () => {
           className={`px-6 pt-6 pb-5 border-b border-white/[0.05] transition-all duration-300 ${menuOpen ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-3'}`}
         >
           <div className="flex items-center gap-2.5 mb-2">
-            <img src={asset('IMG/logo.png')} alt="" className="w-7 h-7 object-contain opacity-80" />
+            <img src={asset('IMG/logo.png')} alt="" className="w-7 h-7 object-contain opacity-80" loading="lazy" />
             <span className="font-heading font-semibold text-white text-sm leading-none">
               João Vitor<span className="text-purple-400"> B.S</span>
             </span>
