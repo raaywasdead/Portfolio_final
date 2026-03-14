@@ -1,8 +1,4 @@
-let ScrollTrigger: typeof import('gsap/ScrollTrigger') | null = null;
-const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
-if (!isMobile) {
-  ScrollTrigger = require('gsap/ScrollTrigger');
-}
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { LoadingScreen } from './components/LoadingScreen'
 import { Background } from './components/Background'
@@ -20,48 +16,61 @@ import { useState } from 'react'
 // A LoadingScreen já é fixed z-[9999], então overlay o conteúdo sem precisar
 // esconder o wrapper — isso evita que o ScrollTrigger calcule posições erradas.
 function App() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
 
   const handleLoadComplete = () => {
-    setIsLoading(false)
+    setIsLoading(false);
     setTimeout(() => {
-      if (!isMobile && ScrollTrigger && typeof (ScrollTrigger as any).refresh === 'function') {
-        (ScrollTrigger as any).refresh();
+      if (!isMobile) {
+        ScrollTrigger.refresh();
       }
     }, 100);
-  }
+  };
 
   return (
     <LanguageProvider>
-    <>
-      {isLoading && <LoadingScreen onComplete={handleLoadComplete} />}
-
-      <a href="#inicio" className="skip-link">Pular para o conteúdo</a>
-
-      <Background />
-      <div className="grain-overlay" aria-hidden="true" />
-
-      <div className="relative z-10">
-        <Navbar />
-        <main id="main-content">
-          <Hero />
-          <div className="section-divider" />
-          <About />
-          <div className="section-divider" />
-          <Services />
-          <div className="section-divider" />
-          <Projects />
-          <div className="section-divider" />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
-
-      <ScrollToTop />
-      <ScrollProgress />
-    </>
+      <>
+        {isMobile ? (
+          <>
+            <Navbar />
+            <main id="main-content">
+              <Hero />
+              <About />
+              <Services />
+              <Projects />
+              <Contact />
+            </main>
+            <Footer />
+          </>
+        ) : (
+          <>
+            {isLoading && <LoadingScreen onComplete={handleLoadComplete} />}
+            <a href="#inicio" className="skip-link">Pular para o conteúdo</a>
+            <Background />
+            <div className="grain-overlay" aria-hidden="true" />
+            <div className="relative z-10">
+              <Navbar />
+              <main id="main-content">
+                <Hero />
+                <div className="section-divider" />
+                <About />
+                <div className="section-divider" />
+                <Services />
+                <div className="section-divider" />
+                <Projects />
+                <div className="section-divider" />
+                <Contact />
+              </main>
+              <Footer />
+            </div>
+            <ScrollToTop />
+            <ScrollProgress />
+          </>
+        )}
+      </>
     </LanguageProvider>
-  )
+  );
 }
 
 export default App

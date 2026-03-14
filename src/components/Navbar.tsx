@@ -1,9 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-let gsap: typeof import('gsap') | null = null;
+import gsap from 'gsap'
 const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
-if (!isMobile) {
-  gsap = require('gsap');
-}
 import { asset } from '@/utils/asset'
 import { useLang } from '@/contexts/LanguageContext'
 import { i18n } from '@/data/i18n'
@@ -53,6 +50,7 @@ export const Navbar = () => {
 
   /* ── Smart hide / show on scroll direction ── */
   useEffect(() => {
+    if (isMobile) return;
     const onScroll = () => {
       cancelAnimationFrame(scrollRafId.current)
       scrollRafId.current = requestAnimationFrame(() => {
@@ -74,20 +72,14 @@ export const Navbar = () => {
 
         if (atTop) {
           if (hiddenRef.current) {
-            if (gsap && !isMobile) {
-              (gsap as any).to(headerRef.current, { y: 0, duration: 0.45, ease: 'power3.out' });
-            }
+            gsap.to(headerRef.current, { y: 0, duration: 0.45, ease: 'power3.out' })
             hiddenRef.current = false
           }
         } else if (goDown && !hiddenRef.current && y > 180) {
-          if (gsap && !isMobile) {
-            (gsap as any).to(headerRef.current, { y: '-110%', duration: 0.35, ease: 'power3.in' });
-          }
+          gsap.to(headerRef.current, { y: '-110%', duration: 0.35, ease: 'power3.in' })
           hiddenRef.current = true
         } else if (!goDown && hiddenRef.current) {
-          if (gsap && !isMobile) {
-            (gsap as any).to(headerRef.current, { y: 0, duration: 0.45, ease: 'power3.out' });
-          }
+          gsap.to(headerRef.current, { y: 0, duration: 0.45, ease: 'power3.out' })
           hiddenRef.current = false
         }
 

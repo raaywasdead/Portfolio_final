@@ -56,38 +56,37 @@ const SCROLL_STR = [0.10, 0.22, 0.38]
 const MOUSE_STR  = [6,    14,   24  ]
 
 export const Background = () => {
-  const mountRef = useRef<HTMLDivElement>(null)
-  const effectRef = useRef<any>(null)
-  const suitsRef  = useRef<HTMLDivElement>(null)
+  const mountRef = useRef<HTMLDivElement>(null);
+  const effectRef = useRef<any>(null);
+  const suitsRef  = useRef<HTMLDivElement>(null);
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
   const mobileScale = isMobile ? 0.52 : 1;
 
   useEffect(() => {
-    if (!isMobile) {
-      // ── Vanta fog ──────────────────────────────────────────────────
-      import('vanta/dist/vanta.fog.min.js').then((mod) => {
-        const VANTA = mod.default
-        if (mountRef.current && !effectRef.current) {
-          effectRef.current = VANTA({
-            el: mountRef.current,
-            THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200,
-            minWidth:  200,
-            highlightColor: 0x0,
-            midtoneColor:   0x0,
-            lowlightColor:  0x48216b,
-            baseColor:      0x0,
-            blurFactor: 0.90,
-            speed: 3.00,
-          })
-        }
-      })
-    }
+    if (isMobile) return;
+    // ── Vanta fog ──────────────────────────────────────────────────
+    import('vanta/dist/vanta.fog.min.js').then((mod) => {
+      const VANTA = mod.default;
+      if (mountRef.current && !effectRef.current) {
+        effectRef.current = VANTA({
+          el: mountRef.current,
+          THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200,
+          minWidth:  200,
+          highlightColor: 0x0,
+          midtoneColor:   0x0,
+          lowlightColor:  0x48216b,
+          baseColor:      0x0,
+          blurFactor: 0.90,
+          speed: 3.00,
+        });
+      }
+    });
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return () => { effectRef.current?.destroy(); effectRef.current = null }
+      return () => { effectRef.current?.destroy(); effectRef.current = null };
     }
 
     // ── Suits parallax (mouse + scroll + float) via RAF ────────────
