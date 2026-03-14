@@ -1,5 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import gsap from 'gsap'
+let gsap: typeof import('gsap') | null = null;
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+if (!isMobile) {
+  gsap = require('gsap');
+}
 import { asset } from '@/utils/asset'
 import { useLang } from '@/contexts/LanguageContext'
 import { i18n } from '@/data/i18n'
@@ -70,14 +74,20 @@ export const Navbar = () => {
 
         if (atTop) {
           if (hiddenRef.current) {
-            gsap.to(headerRef.current, { y: 0, duration: 0.45, ease: 'power3.out' })
+            if (gsap && !isMobile) {
+              (gsap as any).to(headerRef.current, { y: 0, duration: 0.45, ease: 'power3.out' });
+            }
             hiddenRef.current = false
           }
         } else if (goDown && !hiddenRef.current && y > 180) {
-          gsap.to(headerRef.current, { y: '-110%', duration: 0.35, ease: 'power3.in' })
+          if (gsap && !isMobile) {
+            (gsap as any).to(headerRef.current, { y: '-110%', duration: 0.35, ease: 'power3.in' });
+          }
           hiddenRef.current = true
         } else if (!goDown && hiddenRef.current) {
-          gsap.to(headerRef.current, { y: 0, duration: 0.45, ease: 'power3.out' })
+          if (gsap && !isMobile) {
+            (gsap as any).to(headerRef.current, { y: 0, duration: 0.45, ease: 'power3.out' });
+          }
           hiddenRef.current = false
         }
 

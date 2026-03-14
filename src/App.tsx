@@ -1,4 +1,8 @@
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
+let ScrollTrigger: typeof import('gsap/ScrollTrigger') | null = null;
+const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+if (!isMobile) {
+  ScrollTrigger = require('gsap/ScrollTrigger');
+}
 import { LanguageProvider } from './contexts/LanguageContext'
 import { LoadingScreen } from './components/LoadingScreen'
 import { Background } from './components/Background'
@@ -20,7 +24,11 @@ function App() {
 
   const handleLoadComplete = () => {
     setIsLoading(false)
-    setTimeout(() => ScrollTrigger.refresh(), 100)
+    setTimeout(() => {
+      if (!isMobile && ScrollTrigger && typeof (ScrollTrigger as any).refresh === 'function') {
+        (ScrollTrigger as any).refresh();
+      }
+    }, 100);
   }
 
   return (

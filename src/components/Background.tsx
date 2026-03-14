@@ -59,31 +59,33 @@ export const Background = () => {
   const mountRef = useRef<HTMLDivElement>(null)
   const effectRef = useRef<any>(null)
   const suitsRef  = useRef<HTMLDivElement>(null)
-  const mobileScale = typeof window !== 'undefined' && window.innerWidth < 640 ? 0.52 : 1
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+  const mobileScale = isMobile ? 0.52 : 1;
 
   useEffect(() => {
-    // ── Vanta fog ──────────────────────────────────────────────────
-    import('vanta/dist/vanta.fog.min.js').then((mod) => {
-      const VANTA = mod.default
-      if (mountRef.current && !effectRef.current) {
-        effectRef.current = VANTA({
-          el: mountRef.current,
-          THREE,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200,
-          minWidth:  200,
-          highlightColor: 0x0,
-          midtoneColor:   0x0,
-          lowlightColor:  0x48216b,
-          baseColor:      0x0,
-          blurFactor: 0.90,
-          speed: 3.00,
-        })
-      }
-    })
-
+    if (!isMobile) {
+      // ── Vanta fog ──────────────────────────────────────────────────
+      import('vanta/dist/vanta.fog.min.js').then((mod) => {
+        const VANTA = mod.default
+        if (mountRef.current && !effectRef.current) {
+          effectRef.current = VANTA({
+            el: mountRef.current,
+            THREE,
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200,
+            minWidth:  200,
+            highlightColor: 0x0,
+            midtoneColor:   0x0,
+            lowlightColor:  0x48216b,
+            baseColor:      0x0,
+            blurFactor: 0.90,
+            speed: 3.00,
+          })
+        }
+      })
+    }
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return () => { effectRef.current?.destroy(); effectRef.current = null }
     }
